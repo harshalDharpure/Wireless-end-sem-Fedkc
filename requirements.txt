@@ -1,0 +1,9 @@
+flwr[simulation]
+numpy
+PyYAML
+torch>=2.0
+torchvision
+pandas
+matplotlib
+seaborn
+

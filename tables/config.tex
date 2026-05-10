@@ -1,0 +1,22 @@
+% Universal training and federated configuration.
+\begin{table}[h]
+\centering
+\caption{Universal training and federated configuration.}
+\label{tab:config}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{ll}
+\toprule
+\textbf{Parameter} & \textbf{Value} \\
+\midrule
+Algorithm                          & FedAvg / FLwF-2 \\
+Clients $K$                        & 10, 50, 100 \\
+Client fraction per round $\rho$   & 0.5 \\
+Rounds Task 1 / Task 2             & 10 / 10 (total 20) \\
+Local epochs                       & 5 \\
+Local batch size                   & 32 \\
+Optimizer                          & SGD, momentum $0.9$ \\
+Learning rate                      & 0.01 \\
+FLwF-2 $(\alpha_{CE},\beta_{KD},T)$ & $(0.001,\,0.7,\,2)$ \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,51 @@
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Virtual env ---
+.venv/
+venv/
+env/
+
+# --- Datasets (re-downloaded by torchvision on first run) ---
+data/
+
+# --- Large / per-process artifacts ---
+results/logs/
+results/sweep.log
+results/sweep.log.*
+results/*.pid
+results/runs_smoke/
+results/plots_smoke/
+results/summary_table_smoke.csv
+
+# --- LaTeX build artifacts ---
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.lot
+*.lof
+*.nav
+*.snm
+*.vrb
+
+# --- Editor / OS ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

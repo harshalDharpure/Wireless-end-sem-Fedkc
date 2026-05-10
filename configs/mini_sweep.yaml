@@ -1,0 +1,31 @@
+seed: 42
+methods:
+- fedavg
+datasets:
+- mnist
+num_clients:
+- 5
+partitions:
+- name: iid
+  dirichlet_alpha: null
+federated:
+  fraction_fit: 0.6
+training:
+  local_epochs: 1
+  batch_size: 32
+  optimizer:
+    name: sgd
+    lr: 0.01
+    momentum: 0.9
+continual:
+  rounds_task1: 1
+  rounds_task2: 1
+data:
+  data_dir: ./data
+resources:
+  client:
+    num_cpus: 1
+    num_gpus: 0.2
+output:
+  results_dir: ./results
+  runs_subdir: runs_smoke

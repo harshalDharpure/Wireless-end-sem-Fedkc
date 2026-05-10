@@ -1,0 +1,34 @@
+seed: 42
+
+method: fedavg           # fedavg | flwf2
+dataset: mnist           # mnist | fmnist | cifar10
+
+federated:
+  num_clients: 10        # 10 | 50 | 100
+  fraction_fit: 0.5
+
+training:
+  local_epochs: 5
+  batch_size: 32
+  optimizer:
+    name: sgd
+    lr: 0.01
+    momentum: 0.9
+
+continual:
+  rounds_task1: 5
+  rounds_task2: 5
+
+data:
+  data_dir: ./data
+  partition: iid         # iid | dirichlet
+  dirichlet_alpha: null  # 0.01 | 0.1 | 0.5 | 1.0 (when partition=dirichlet)
+
+output:
+  results_dir: ./results
+
+# Ray/Flower simulation resources (GPU usage)
+resources:
+  client:
+    num_cpus: 1
+    num_gpus: 0.2   # good default: up to 5 clients/GPU (adjust as needed)

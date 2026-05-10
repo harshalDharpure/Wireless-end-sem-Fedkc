@@ -1,0 +1,15 @@
+{
+  "fedkdc-cl": {
+    "average_forgetting": 0.10040863981319323,
+    "backward_transfer": -0.20081727962638646,
+    "final_average_accuracy": 0.1653980662415141,
+    "forgetting_per_task": {
+      "mnist_0_4": 0.20081727962638646,
+      "mnist_5_9": 0.0
+    },
+    "task_wise_accuracy_final": {
+      "mnist_0_4": 0.0,
+      "mnist_5_9": 0.3307961324830282
+    }
+  }
+}

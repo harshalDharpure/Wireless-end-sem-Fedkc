@@ -1,0 +1,32 @@
+% FedKDC-CL fast grid: Dirichlet non-IID.
+\begin{table*}[t]
+\centering
+\footnotesize
+\caption{FedKDC-CL vs.\ FedAvg on MNIST continual learning (two class-incremental tasks; summary metrics over all classes).
+Non-IID partitions via $\mathrm{Dir}(\alpha)$.
+Setup: two communication rounds per task, client fraction $0.5$, virtual clients on CPU, seed $42$
+(details in Section~\ref{ssec:fedkdc_cl_results}).
+\emph{FAvgAcc}/\emph{FFrg}/\emph{FBWT}: FedAvg final average accuracy, average forgetting, backward transfer;
+\emph{KKDC}/\emph{KFrg}/\emph{KBWT}: FedKDC-CL.}
+\label{tab:fedkdc_grid_dirichlet}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}c l cccccc@{}}
+\toprule
+$K$ & $\alpha$ & \textbf{FAvgAcc} & \textbf{FFrg} & \textbf{FBWT}
+& \textbf{KKDC} & \textbf{KFrg} & \textbf{KBWT} \\
+\midrule
+10 & 0.01 & 0.1706 & 0.1993 & -0.3985 & 0.1897 & 0.0955 & -0.1911 \\
+10 & 0.1 & 0.2408 & 0.4774 & -0.9549 & 0.3414 & 0.4866 & -0.9731 \\
+10 & 0.5 & 0.4200 & 0.4805 & -0.9611 & 0.4278 & 0.4869 & -0.9737 \\
+10 & 1.0 & 0.4742 & 0.4927 & -0.9854 & 0.4638 & 0.4910 & -0.9819 \\
+50 & 0.01 & 0.0964 & 0.0392 & -0.0784 & 0.1004 & 0.0000 & 0.1868 \\
+50 & 0.1 & 0.2330 & 0.2435 & -0.4871 & 0.2363 & 0.2972 & -0.5945 \\
+50 & 0.5 & 0.4416 & 0.4606 & -0.9212 & 0.4200 & 0.4648 & -0.9296 \\
+50 & 1.0 & 0.4356 & 0.4784 & -0.9568 & 0.4284 & 0.4560 & -0.9120 \\
+100 & 0.01 & 0.0964 & 0.0392 & -0.0784 & 0.1004 & 0.0000 & 0.1868 \\
+100 & 0.1 & 0.2696 & 0.1242 & -0.2485 & 0.1324 & 0.2729 & -0.5458 \\
+100 & 0.5 & 0.2637 & 0.4419 & -0.8838 & 0.3110 & 0.3793 & -0.7585 \\
+100 & 1.0 & 0.3261 & 0.4313 & -0.8626 & 0.3034 & 0.3709 & -0.7418 \\
+\bottomrule
+\end{tabular}
+\end{table*}

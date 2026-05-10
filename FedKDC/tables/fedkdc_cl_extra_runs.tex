@@ -1,0 +1,23 @@
+% Earlier FedKDC-CL-related pilots (development).
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Additional FedKDC-CL pilots (development and smoke tests; MNIST). Same aggregate definitions as Tables~\ref{tab:fedkdc_grid_dirichlet}--\ref{tab:fedkdc_grid_iid}.}
+\label{tab:fedkdc_extra_runs}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}llccc@{}}
+\toprule
+\textbf{Pilot} & \textbf{Method} & \textbf{Acc.} & \textbf{Forg.} & \textbf{BWT} \\
+\midrule
+\multirow{2}{*}{P1}
+ & FedAvg & 0.0964 & 0.0392 & -0.0784 \\
+ & FedKDC-CL & 0.1004 & 0.0000 & 0.1868 \\
+\midrule
+\multirow{2}{*}{P2}
+ & FedAvg & 0.1988 & 0.4896 & -0.9792 \\
+ & FedKDC-CL & 0.1800 & 0.4929 & -0.9858 \\
+\midrule
+P3 & FedKDC-CL & 0.1654 & 0.1004 & -0.2008 \\
+\bottomrule
+\end{tabular}
+\end{table}

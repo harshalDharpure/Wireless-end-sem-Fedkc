@@ -1,0 +1,66 @@
+project:
+  name: FedKDC-CL-submit-fast
+  seed: 42
+  device: cuda
+  num_workers: 0
+  results_dir: results
+
+fl:
+  num_clients: 10
+  client_fraction: 0.5
+  num_rounds: 2
+  eval_every: 1
+
+client:
+  batch_size: 32
+  local_epochs: 5
+  lr: 0.01
+  momentum: 0.9
+  weight_decay: 0.0
+  max_grad_norm: 0.0
+
+data:
+  dataset: MNIST
+  iid: false
+  dirichlet_alpha: 0.1
+  val_ratio: 0.1
+
+continual:
+  enabled: true
+  tasks:
+    - name: mnist_0_4
+      dataset: MNIST
+      class_subset: [0, 1, 2, 3, 4]
+      rounds: 2
+    - name: mnist_5_9
+      dataset: MNIST
+      class_subset: [5, 6, 7, 8, 9]
+      rounds: 2
+
+fedavg:
+  strategy: FedAvg
+
+fedkdc_cl:
+  strategy: FedKDC-CL
+  num_clusters: 2
+  kd:
+    enabled: true
+    kd_epochs: 1
+    kd_weight: 1.0
+    ce_weight: 1.0
+    base_temperature: 2.0
+    target_entropy: 1.5
+    min_temperature: 1.0
+    max_temperature: 6.0
+  drift_guard:
+    enabled: true
+    promote_every: 2
+
+runtime:
+  # Virtual clients: CPU training avoids Ray/GPU actor issues; server eval still uses project.device.
+  client_torch_device: cpu
+  client_num_cpus: 8
+  client_num_gpus: 0
+  ray_init_args:
+    include_dashboard: false
+    log_to_driver: false

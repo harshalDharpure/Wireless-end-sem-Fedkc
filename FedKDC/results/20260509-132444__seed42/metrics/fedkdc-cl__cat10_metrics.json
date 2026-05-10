@@ -1,0 +1,13 @@
+{
+  "average_forgetting": 0.45602257248491923,
+  "backward_transfer": -0.9120451449698385,
+  "final_average_accuracy": 0.42840979222382225,
+  "forgetting_per_task": {
+    "mnist_0_4": 0.9120451449698385,
+    "mnist_5_9": 0.0
+  },
+  "task_wise_accuracy_final": {
+    "mnist_0_4": 0.0,
+    "mnist_5_9": 0.8568195844476445
+  }
+}

@@ -1,0 +1,69 @@
+project:
+  name: FedKDC-CL
+  seed: 42
+  device: cuda  # auto|cpu|cuda
+  num_workers: 2
+  results_dir: results
+
+fl:
+  num_clients: 10          # supports 10, 50, 100
+  client_fraction: 0.5     # course rule (FedAvg baseline)
+  num_rounds: 20
+  eval_every: 1
+
+client:
+  batch_size: 32           # course rule
+  local_epochs: 5          # course rule
+  lr: 0.01                 # course rule
+  momentum: 0.9            # course rule
+  weight_decay: 0.0
+  max_grad_norm: 0.0       # 0 disables
+
+data:
+  dataset: MNIST           # MNIST|FMNIST|CIFAR10|CIFAR100|Shakespeare|Sent140
+  iid: false
+  dirichlet_alpha: 0.1     # used when iid=false; alpha ∈ {0.01,0.1,0.5,1.0}
+  val_ratio: 0.1
+
+continual:
+  enabled: true
+  # A simple, structured task stream satisfying the prompt. Each task runs federated training,
+  # then evaluates on all seen tasks, storing task-wise history for Cat-10 metrics.
+  tasks:
+    - name: mnist_0_4
+      dataset: MNIST
+      class_subset: [0, 1, 2, 3, 4]
+      rounds: 10
+    - name: mnist_5_9
+      dataset: MNIST
+      class_subset: [5, 6, 7, 8, 9]
+      rounds: 10
+    - name: fmnist_0_4
+      dataset: FMNIST
+      class_subset: [0, 1, 2, 3, 4]
+      rounds: 10
+    - name: cifar10_0_4
+      dataset: CIFAR10
+      class_subset: [0, 1, 2, 3, 4]
+      rounds: 10
+
+fedavg:
+  # Strict baseline settings are enforced in code where required.
+  strategy: FedAvg
+
+fedkdc_cl:
+  strategy: FedKDC-CL
+  num_clusters: 3
+  # Two-phase per round: self-learning (standard local training) then KD fine-tune.
+  kd:
+    enabled: true
+    kd_epochs: 1
+    kd_weight: 1.0
+    ce_weight: 1.0
+    base_temperature: 2.0
+    target_entropy: 1.5     # entropy reducer target (nats); used for adaptive temperature
+    min_temperature: 1.0
+    max_temperature: 6.0
+  drift_guard:
+    enabled: true
+    promote_every: 5        # periodically force low-activity clients into leadership

@@ -1,0 +1,28 @@
+{
+  "fedavg": {
+    "average_forgetting": 0.03920996302782642,
+    "backward_transfer": -0.07841992605565284,
+    "final_average_accuracy": 0.09642656230441135,
+    "forgetting_per_task": {
+      "mnist_0_4": 0.07841992605565284,
+      "mnist_5_9": 0.0
+    },
+    "task_wise_accuracy_final": {
+      "mnist_0_4": 0.001945903872348706,
+      "mnist_5_9": 0.19090722073647398
+    }
+  },
+  "fedkdc-cl": {
+    "average_forgetting": 0.0,
+    "backward_transfer": 0.18680677174547577,
+    "final_average_accuracy": 0.10040863981319323,
+    "forgetting_per_task": {
+      "mnist_0_4": 0.0,
+      "mnist_5_9": 0.0
+    },
+    "task_wise_accuracy_final": {
+      "mnist_0_4": 0.20081727962638646,
+      "mnist_5_9": 0.0
+    }
+  }
+}
